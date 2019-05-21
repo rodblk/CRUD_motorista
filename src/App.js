@@ -100,23 +100,27 @@ class App extends Component {
         <div className="App">
           <h2>{this.state.title}</h2>
           <form ref="myForm" className="myForm">
-            <input type="text" ref="mot_cpf" placeholder="CPF" className="formField"></input>
-            <input type="text" ref="mot_rg" placeholder="RG" className="formField"></input>
-            <input type="text" ref="mot_nome" placeholder="Nome" className="formField"></input>
-            <input type="text" ref="mot_renach" placeholder="Renach" className="formField"></input>
-            <input type="text" ref="mot_telefone" placeholder="Telefone" className="formField"></input>
-            <input type="text" ref="mot_status" placeholder="Status do Motorista" className="formField"></input>
-            <input type="text" ref="mot_cep" placeholder="CEP" className="formField"></input>
-            <input type="text" ref="mot_rua" placeholder="Rua" className="formField"></input>
-            <input type="text" ref="mot_bairro" placeholder="Bairro" className="formField"></input>
+            <input type="text" ref="mot_cpf" placeholder="CPF" maxLength="11" className="formField"></input>
+            <input type="text" ref="mot_rg" placeholder="RG" maxLength="20" className="formField"></input>
+            <input type="text" ref="mot_nome" placeholder="Nome" maxLength="100" className="formField"></input>
+            <input type="text" ref="mot_renach" placeholder="Renach" maxLength="11" className="formField"></input>
+            <input type="text" ref="mot_telefone" placeholder="Telefone" maxLength="20" className="formField"></input>
+            {/* <input type="text" ref="mot_status" placeholder="Status do Motorista" maxLength="1" className="formField"></input> */}
+            <select ref='mot_status' className="formField">
+              <option value="">Selecione o status do motorista</option>
+              <option value="ativo">Ativo</option>
+              <option value="inativo">Inativo</option>
+            </select>
+            <input type="text" ref="mot_cep" placeholder="CEP" maxLength="7" className="formField"></input>
+            <input type="text" ref="mot_rua" placeholder="Rua" maxLength="50" className="formField"></input>
+            <input type="text" ref="mot_bairro" placeholder="Bairro" maxLength="50" className="formField"></input>
             <button onClick={this.fSubmit} className="myButton">Enviar</button>
           </form>
           <pre>
             {
               datas.map((data, i) =>
               <li key={i} className="myList">
-                {i+1}. {data.cpf}, {data.rg}, {data.nome}, {data.renach}, {data.telefone}, {data.status},
-                {data.cep}, {data.rua}, {data.bairro},
+                {i+1}. {data.cpf}, {data.rg}, {data.nome}, {data.renach}, {data.telefone}, {data.status}, {data.cep}, {data.rua}, {data.bairro}
                 <button onClick={()=>this.fRemove(i)} className="myListButton">Remover</button>
                 <button onClick={()=>this.fEdit(i)} className="myListButton">Editar</button>
               </li>
